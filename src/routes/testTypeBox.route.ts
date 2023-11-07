@@ -1,4 +1,4 @@
-import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
 const Aha = z.object({
@@ -7,9 +7,9 @@ const Aha = z.object({
 
 type IAha = z.infer<typeof Aha>;
 
-export default (server: FastifyInstance) => {
+export default (server: FastifyInstance, options: FastifyPluginOptions, done: any) => {
   server.route({
-    method: "POST",
+    method: "GET",
     url: `/`,
     schema: {
       querystring: z.object({
@@ -23,4 +23,6 @@ export default (server: FastifyInstance) => {
       reply.send(`It's working`);
     },
   });
+
+  done();
 };

@@ -1,6 +1,6 @@
-import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
+import { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from "fastify";
 
-export default (server: FastifyInstance) => {
+export default (server: FastifyInstance, options: FastifyPluginOptions, done: any) => {
   server.route({
     method: "GET",
     url: `/health-check`,
@@ -8,4 +8,6 @@ export default (server: FastifyInstance) => {
       reply.send(`this server still OK`);
     },
   });
+
+  done();
 };

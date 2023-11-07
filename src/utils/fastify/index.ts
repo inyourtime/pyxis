@@ -42,13 +42,12 @@ export default class FastifyServer {
     );
   }
 
-  private addRouter(routerFolder: string = "../../routes") {
+  private addRouter(routerFolder: string = "../../routes", prefix: string = "api") {
     const routesDir = path.join(__dirname, routerFolder);
     fs.readdirSync(routesDir).forEach((file) => {
       if (file.endsWith(".route.ts")) {
         const routeFilePath = path.join(routesDir, file);
-        const routeModule = require(routeFilePath);
-        routeModule.default(this.server);
+        this.server.register(require(routeFilePath), { prefix: prefix });
       }
     });
   }
@@ -62,7 +61,7 @@ export default class FastifyServer {
 
         this.setErrorHandler();
 
-        this.addRouter("./routes");
+        this.addRouter("./routes", "api/service");
         this.addRouter();
 
         this.server.listen(this.opt).then(() => resolve(this.server));

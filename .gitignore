@@ -11,3 +11,4 @@ yarn-error.log
 *.http
 
 *.env
+*.env.test
