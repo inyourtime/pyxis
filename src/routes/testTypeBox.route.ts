@@ -1,6 +1,5 @@
 import { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
-import { FastifyZod } from "utils/fastify/declaration/server.interface";
 
 const Aha = z.object({
   name: z.string(),

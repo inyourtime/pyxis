@@ -9,3 +9,5 @@ dist
 yarn-error.log
 
 *.http
+
+*.env

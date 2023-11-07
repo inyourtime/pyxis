@@ -7,11 +7,8 @@ import fastify, {
 } from "fastify";
 import path from "path";
 import fs from "fs";
-import { ZodError, z } from "zod";
-import {
-  serializerCompiler,
-  validatorCompiler,
-} from "fastify-type-provider-zod";
+import { ZodError } from "zod";
+import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 
 export default class FastifyServer {
   private server: FastifyInstance;
@@ -39,9 +36,9 @@ export default class FastifyServer {
           });
           return;
         }
-        console.log(error.message);
+        console.error(error.message);
         reply.send(error);
-      }
+      },
     );
   }
 
