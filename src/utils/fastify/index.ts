@@ -1,14 +1,8 @@
-import fastify, {
-  FastifyError,
-  FastifyInstance,
-  FastifyListenOptions,
-  FastifyReply,
-  FastifyRequest,
-} from "fastify";
+import fastify, { FastifyInstance, FastifyListenOptions } from "fastify";
 import path from "path";
 import fs from "fs";
-import { ZodError } from "zod";
 import { serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
+import errorHandler from "./errorHandler";
 
 export default class FastifyServer {
   private server: FastifyInstance;
@@ -26,20 +20,7 @@ export default class FastifyServer {
   }
 
   private setErrorHandler() {
-    this.server.setErrorHandler(
-      (error: FastifyError, request: FastifyRequest, reply: FastifyReply) => {
-        if (error instanceof ZodError) {
-          reply.status(400).send({
-            statusCode: 400,
-            error: "Bad Request",
-            issues: error.issues,
-          });
-          return;
-        }
-        console.error(error.message);
-        reply.send(error);
-      },
-    );
+    this.server.setErrorHandler(errorHandler);
   }
 
   private addRouter(routerFolder: string = "../../routes", prefix: string = "api") {
