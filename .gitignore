@@ -1,7 +1,7 @@
 node_modules
 configs
 yarn.lock
-*.sh
+# *.sh
 .DS_Store
 dist
 *.log
