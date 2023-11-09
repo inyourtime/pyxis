@@ -1,4 +1,4 @@
-import FastifyServer from "utils/fastify";
+import FastifyServer from 'utils/fastify';
 
 (async () => {
   const server = new FastifyServer();

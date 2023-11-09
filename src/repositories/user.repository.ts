@@ -1,5 +1,5 @@
-import { type Prisma } from "@prisma/client";
-import prisma from "cores/db/mongodb/prisma";
+import { type Prisma } from '@prisma/client';
+import prisma from 'cores/db/mongodb/prisma';
 
 export class UserRepository {
   constructor(private _prisma = prisma.user) {}

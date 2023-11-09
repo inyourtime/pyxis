@@ -1,5 +1,5 @@
-import { EmbedBuilder, WebhookClient, WebhookClientOptions, version } from "discord.js";
-import { FastifyRequest } from "fastify";
+import { EmbedBuilder, WebhookClient, WebhookClientOptions, version } from 'discord.js';
+import { FastifyRequest } from 'fastify';
 
 export default class DiscordWebhook {
   private _client: WebhookClient;

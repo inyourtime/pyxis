@@ -15,7 +15,7 @@ export default {
     PASSWORD: process.env.TYPEORM_PASSWORD,
     DATABASE: process.env.TYPEORM_DATABASE,
     ENTITIES: process.env.TYPEORM_ENTITIES,
-    SYNCHRONIZE: process.env.TYPEORM_SYNCHRONIZE?.toLowerCase() === "true" ? true : false,
+    SYNCHRONIZE: process.env.TYPEORM_SYNCHRONIZE?.toLowerCase() === 'true' ? true : false,
     SCHEMA: process.env.TYPEORM_SCHEMA,
     // CACHE: process.env.TYPEORM_CACHE
   },
@@ -27,7 +27,7 @@ export default {
     PASSWORD: process.env.TYPEORM_TEST_PASSWORD,
     DATABASE: process.env.TYPEORM_TEST_DATABASE,
     ENTITIES: process.env.TYPEORM_TEST_ENTITIES,
-    SYNCHRONIZE: process.env.TYPEORM_TEST_SYNCHRONIZE?.toLowerCase() === "true" ? true : false,
+    SYNCHRONIZE: process.env.TYPEORM_TEST_SYNCHRONIZE?.toLowerCase() === 'true' ? true : false,
     SCHEMA: process.env.TYPEORM_TEST_SCHEMA,
   },
   MONGODB: {
@@ -49,7 +49,7 @@ export default {
     ACCESSKEYID: process.env.OBJECTSTORAGE_ACCESSKEYID,
     SECRETACCESSKEY: process.env.OBJECTSTORAGE_SECRETACCESSKEY,
     BUCKET: process.env.OBJECTSTORAGE_BUCKET,
-    FOLDER: process.env.OBJECTSTORAGE_FOLDER || "dev",
+    FOLDER: process.env.OBJECTSTORAGE_FOLDER || 'dev',
     SIGNATUREVERSION: process.env.OBJECTSTORAGE_SIGNATUREVERSION,
   },
 };

@@ -1,9 +1,9 @@
-import { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from "fastify";
-import { UserRepository } from "repositories/user.repository";
+import { FastifyInstance, FastifyPluginOptions, FastifyReply, FastifyRequest } from 'fastify';
+import { UserRepository } from 'repositories/user.repository';
 
 export default (server: FastifyInstance, options: FastifyPluginOptions, done: any) => {
   server.route({
-    method: "GET",
+    method: 'GET',
     url: `/user`,
     handler: async (request: FastifyRequest, reply: FastifyReply) => {
       const userRepo = new UserRepository();
