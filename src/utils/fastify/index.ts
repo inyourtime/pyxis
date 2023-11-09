@@ -42,10 +42,6 @@ export default class FastifyServer {
   start(): Promise<FastifyInstance> {
     return new Promise(async (resolve, reject) => {
       try {
-        this.server.get('/', (request, reply) => {
-          reply.send('hekko');
-        });
-
         this.setErrorHandler();
 
         this.addAuthentication();

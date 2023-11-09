@@ -12,7 +12,7 @@ model Post {
   slug     String    @unique
   title    String
   body     String
-  author   User      @relation(fields: [authorId], references: [id])
+  author   User      @relation(fields: [authorId], references: [id], onDelete: Cascade)
   authorId String    @db.ObjectId
   comments Comment[]
 }
@@ -28,7 +28,7 @@ model User {
 model Comment {
   id      String @id @default(auto()) @map("_id") @db.ObjectId
   comment String
-  post    Post   @relation(fields: [postId], references: [id])
+  post    Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
   postId  String @db.ObjectId
 }
 
