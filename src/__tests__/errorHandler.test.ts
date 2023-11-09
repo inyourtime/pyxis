@@ -1,4 +1,3 @@
-import { FastifyReply } from 'fastify';
 import errorHandler from 'utils/fastify/errorHandler';
 import { ZodError } from 'zod';
 
