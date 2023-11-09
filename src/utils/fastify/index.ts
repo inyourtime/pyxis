@@ -3,6 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import { serializerCompiler, validatorCompiler } from 'fastify-type-provider-zod';
 import errorHandler from './errorHandler';
+import { fastifyOauth2 } from '@fastify/oauth2';
+import { GoogleAuthenticate } from './authenticate/googleAuthenticate';
 
 export default class FastifyServer {
   private server: FastifyInstance;
@@ -23,6 +25,10 @@ export default class FastifyServer {
     this.server.setErrorHandler(errorHandler);
   }
 
+  private addAuthentication() {
+    this.server.register(GoogleAuthenticate);
+  }
+
   private addRouter(routerFolder: string = '../../routes', prefix: string = 'api') {
     const routesDir = path.join(__dirname, routerFolder);
     fs.readdirSync(routesDir).forEach((file) => {
@@ -41,6 +47,8 @@ export default class FastifyServer {
         });
 
         this.setErrorHandler();
+
+        this.addAuthentication();
 
         this.addRouter('./routes', 'api/service');
         this.addRouter();

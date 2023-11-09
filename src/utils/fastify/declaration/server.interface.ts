@@ -1,3 +1,4 @@
+import { OAuth2Namespace } from '@fastify/oauth2';
 import {
   FastifyBaseLogger,
   FastifyInstance,
@@ -14,3 +15,9 @@ export type FastifyZod = FastifyInstance<
   FastifyBaseLogger,
   ZodTypeProvider
 >;
+
+declare module 'fastify' {
+  interface FastifyInstance {
+    googleOAuth2: OAuth2Namespace;
+  }
+}
